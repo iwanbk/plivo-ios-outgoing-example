@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PlivoViewController.h"
+#import "Phone.h"
 
 @interface PlivoAppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (nonatomic, retain) IBOutlet PlivoViewController* viewController;
+
+@property Phone *phone;
 
 @property (strong, nonatomic) UIWindow *window;
 

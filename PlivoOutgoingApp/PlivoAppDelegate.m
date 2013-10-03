@@ -7,12 +7,18 @@
 //
 
 #import "PlivoAppDelegate.h"
+#import "PlivoViewController.h"
 
 @implementation PlivoAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    self.phone = [[Phone alloc] init];
+    
+    self.viewController = (PlivoViewController *)self.window.rootViewController;
+    self.viewController.phone = self.phone;
+    [self.phone setDelegate:self.viewController];
+
     return YES;
 }
 							

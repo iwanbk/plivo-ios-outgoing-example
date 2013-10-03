@@ -1,23 +1,115 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2519" systemVersion="12A206j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1856"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--Plivo View Controller-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="PlivoViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                    <view key="view" contentMode="center" id="3">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number / SIP URI" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Je-gE-LC1">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2" id="5BY-g3-tFs"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x3I-Bc-QV3">
+                                <color key="backgroundColor" red="0.54509806630000002" green="0.77254909279999995" blue="0.19215688110000001" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="Ywc-fV-fzM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Call">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="makeCall:" destination="2" eventType="touchUpInside" id="Uvm-jv-RC8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6i3-zp-Ang">
+                                <color key="backgroundColor" red="1" green="0.29835427165735173" blue="0.29245956935508877" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="OLe-lE-vGz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Hangup">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hangupCall:" destination="2" eventType="touchUpInside" id="gwS-MX-vdO"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BZf-8y-2fp">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="121" id="PU7-aR-G4V"/>
+                                    <constraint firstAttribute="width" constant="309" id="bEd-G8-sFz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="k14-vE-oMD">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="164" id="adv-cs-fro"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Plivo Outgoing App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JwS-BF-qut">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="252" id="oeg-Q3-cat"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BZf-8y-2fp" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="5" id="5kY-4R-Ozk"/>
+                            <constraint firstItem="JwS-BF-qut" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="36" id="7Br-EL-u2o"/>
+                            <constraint firstItem="7Je-gE-LC1" firstAttribute="trailing" secondItem="JwS-BF-qut" secondAttribute="trailing" type="default" id="8jf-li-f1Z"/>
+                            <constraint firstItem="x3I-Bc-QV3" firstAttribute="leading" secondItem="6i3-zp-Ang" secondAttribute="leading" type="default" id="Aao-m8-1fI"/>
+                            <constraint firstItem="JwS-BF-qut" firstAttribute="top" secondItem="3" secondAttribute="top" constant="76" id="B6X-xp-2fX"/>
+                            <constraint firstItem="k14-vE-oMD" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="71" id="Gki-PW-8Mv"/>
+                            <constraint firstItem="7Je-gE-LC1" firstAttribute="leading" secondItem="x3I-Bc-QV3" secondAttribute="leading" type="default" id="NSJ-8S-Xre"/>
+                            <constraint firstItem="x3I-Bc-QV3" firstAttribute="trailing" secondItem="6i3-zp-Ang" secondAttribute="trailing" type="default" id="R2X-MI-GD3"/>
+                            <constraint firstItem="6i3-zp-Ang" firstAttribute="top" secondItem="3" secondAttribute="top" constant="250" id="Tpa-p0-EBn"/>
+                            <constraint firstItem="x3I-Bc-QV3" firstAttribute="top" secondItem="3" secondAttribute="top" constant="178" id="WeN-iM-vGy"/>
+                            <constraint firstItem="k14-vE-oMD" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="cTv-i6-2MG"/>
+                            <constraint firstItem="7Je-gE-LC1" firstAttribute="leading" secondItem="JwS-BF-qut" secondAttribute="leading" type="default" id="cbh-0h-BOa"/>
+                            <constraint firstItem="7Je-gE-LC1" firstAttribute="trailing" secondItem="x3I-Bc-QV3" secondAttribute="trailing" type="default" id="fbv-Ce-k3X"/>
+                            <constraint firstItem="7Je-gE-LC1" firstAttribute="top" secondItem="3" secondAttribute="top" constant="123" id="qr9-Xi-uk6"/>
+                            <constraint firstAttribute="bottom" secondItem="BZf-8y-2fp" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="ysb-5H-U8e"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="callBtn" destination="x3I-Bc-QV3" id="QYB-eA-pkj"/>
+                        <outlet property="hangupBtn" destination="6i3-zp-Ang" id="UOX-A0-vML"/>
+                        <outlet property="logTextView" destination="BZf-8y-2fp" id="FVn-J3-UVe"/>
+                        <outlet property="textField" destination="7Je-gE-LC1" id="msz-dk-eBK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-25" y="-74"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo.png" width="121" height="37"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
