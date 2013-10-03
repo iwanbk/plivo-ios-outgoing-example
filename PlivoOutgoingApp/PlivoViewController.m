@@ -46,6 +46,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+/**
+ * Hide keyboard after user press 'return' key
+ */
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
     if (theTextField == self.textField) {
         [theTextField resignFirstResponder];
@@ -54,13 +57,17 @@
 }
 
 /**
- * To hide keyboard when text view being clicked
+ * Hide keyboard when text view being clicked
  */
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
     return NO;
 }
 
+
+/**
+ * Print debug log to textview in the bottom of the view screen
+ */
 - (void)logDebug:(NSString *)message
 {
     if ( ![NSThread isMainThread] )
@@ -68,10 +75,13 @@
         [self performSelectorOnMainThread:@selector(logDebug:) withObject:message waitUntilDone:NO];
 		return;
 	}
+    /* add newline to end of the message */
     NSString *toLog = [[NSString alloc] initWithFormat:@"%@\n",message];
+    
+    /* insert message */
     [self.logTextView insertText:toLog];
     
-	//Scroll textview
+	/* Scroll textview */
 	[self.logTextView scrollRangeToVisible:NSMakeRange([self.logTextView.text length], 0)];
 }
 
@@ -98,10 +108,10 @@
     NSString *debugStr = [[NSString alloc]initWithFormat:@"- Make a call to '%@'", dest];
     [self logDebug:debugStr];
     
-    //make the call
+    /* make the call */
     outCall = [self.phone call:dest];
     
-    //enable hangup button and disable call button
+    /* enable hangup button and disable call button */
     [self enableHangupDisableCallBtn];
 }
 
@@ -110,16 +120,22 @@
     
     [outCall disconnect];
     
-    //disable hangup button and enable call button
+    /* disable hangup button and enable call button */
     [self enableCallDisableHangupBtn];
 }
 
+/**
+ * Enable call button and disable hangup button
+ */
 - (void)enableCallDisableHangupBtn
 {
     [self.hangupBtn setEnabled:NO];
     [self.callBtn setEnabled:YES];
 }
 
+/**
+ * Enable hangup button and disable call button
+ */
 - (void)enableHangupDisableCallBtn
 {
     [self.hangupBtn setEnabled:YES];
@@ -128,7 +144,6 @@
 
 - (void)onOutgoingCallAnswered:(PlivoOutgoing *)call
 {
-    NSLog(@"call answered");
     [self logDebug:@"- On outgoing call answered"];
 }
 
@@ -147,7 +162,7 @@
 - (void)onOutgoingCallRejected:(PlivoOutgoing *)call
 {
     [self logDebug:@"- On outgoing call rejected"];
-    NSLog(@"On outgoing call rejected");
+    
     [self enableCallDisableHangupBtn];
 }
 

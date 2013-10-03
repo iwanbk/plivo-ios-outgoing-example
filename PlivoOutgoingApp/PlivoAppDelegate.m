@@ -13,10 +13,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    /* init the phone */
     self.phone = [[Phone alloc] init];
     
+    /* get view controller object */
     self.viewController = (PlivoViewController *)self.window.rootViewController;
+    
     self.viewController.phone = self.phone;
+    
+    /* set view controller as delegate of plivo phone */
     [self.phone setDelegate:self.viewController];
 
     return YES;
